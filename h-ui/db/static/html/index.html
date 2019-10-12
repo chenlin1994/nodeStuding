@@ -20,7 +20,7 @@
       var formData = new FormData()
       formData.append('img',file)
       $.ajax({
-        url:'http://127.0.0.1:3005/file/upload',
+        url:'/file/upload',
         type:'post',
         cache:false,
         data:formData,
@@ -28,7 +28,7 @@
         contentType:false,
         success:function(data){
           console.log(data)
-          $("img").attr('src', `http://127.0.0.1:3005${data.img}`)
+          $("img").attr('src', `${data.img}`)
         },
         error:function(e){
           console.log('error')

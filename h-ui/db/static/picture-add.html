@@ -99,7 +99,7 @@
       var formData = new FormData()
       formData.append('img',file)
       $.ajax({
-        url:'http://127.0.0.1:3005/file/upload',
+        url:'/file/upload',
         type:'post',
         cache:false,
         data:formData,
@@ -108,7 +108,7 @@
         success:function(data){
           console.log(data)
           imgUrl = data.img
-          $("img").attr('src', `http://127.0.0.1:3005${data.img}`)
+          $("img").attr('src', `${data.img}`)
         },
         error:function(e){
           console.log('error')
@@ -124,7 +124,7 @@ function submit(){
         typeid:$("#typeid").val(),
         img:imgUrl
     }
-    $.post('http://127.0.0.1:3005/food/add',params,(data)=>{
+    $.post('/food/add',params,(data)=>{
         console.log(data)
         article_save()
     })

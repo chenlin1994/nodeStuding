@@ -255,7 +255,7 @@ function member_add(title,url,w,h){
 }
 
 function logOut(){
-	$.post('http://127.0.0.1:3005/user/logOut',{},(data)=>{
+	$.post('/user/logOut',{},(data)=>{
 		window.location = './login.html'
 	})
 }
