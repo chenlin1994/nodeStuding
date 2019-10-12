@@ -41,6 +41,7 @@ app.use('/file',fileRouter)
 app.use('/static',express.static(path.join(__dirname,'./static')))
 app.use('/images',express.static(path.join(__dirname,'./uploads')))
 app.use('/public',express.static(path.join(__dirname,'./images')))
+app.use('/apidoc',express.static(path.join(__dirname,'./apidoc')))
 app.get('/cors',(req,res)=>{
   res.send('ok')
   request('',(err,res,body)=>{

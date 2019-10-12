@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
+</head>
+<body>
+    <input type="file" name="upload" id="file">
+  <button onclick="doUpload()">获取
+    <img src="" alt="">
+  <script>
+    function doUpload(){
+      var file = $("#file").get(0).files[0]
+      var formData = new FormData()
+      formData.append('img',file)
+      $.ajax({
+        url:'http://127.0.0.1:3005/file/upload',
+        type:'post',
+        cache:false,
+        data:formData,
+        processData:false,
+        contentType:false,
+        success:function(data){
+          console.log(data)
+          $("img").attr('src', `http://127.0.0.1:3005${data.img}`)
+        },
+        error:function(e){
+          console.log('error')
+        }
+      })
+    }
+  </script>
+</body>
+</html>

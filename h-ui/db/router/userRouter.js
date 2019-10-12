@@ -55,7 +55,7 @@ router.post('/login',(req,res)=>{
         req.session.login=true;
         req.session.name=us
         let token = JWT.createToken({login:true,name:us})
-        res.send({err:0,msg:'登录ok',token:token})
+        res.send({err:0,msg:'登录ok',token:})
       }else{
         res.send({err:-2,msg:'用户名或密码错误'})
       }

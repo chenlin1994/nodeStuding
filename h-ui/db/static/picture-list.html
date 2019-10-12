@@ -88,8 +88,7 @@ let allPage = 0
 let nowPage = 1
 function getFoodList({pageSize=4,page=1}){
 	$.post('http://127.0.0.1:3005/food/getInfoByPage',{pageSize,page},(data)=>{
-		debugger;
-		if(data.err==1){
+		if(data.code==1){
 			renderList(data.info)
 		}else if(data.err ==11){
 			top.window.location='./login.html'
