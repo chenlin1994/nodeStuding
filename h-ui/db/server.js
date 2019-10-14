@@ -12,6 +12,7 @@ app.use(cors())
 const userRouter = require('./router/userRouter')
 const foodRouter = require('./router/foodRouter')
 const fileRouter = require('./router/fileRouter')
+const codeRouter = require('./router/codeRouter')
 app.use(bodyParser.urlencoded({extended:false}))
 app.use(bodyParser.json())
 //session 整体配置
@@ -37,6 +38,7 @@ app.use('/food',(req,res,next)=>{
     res.send({err:11,msg:'未登录'})
   }
 },foodRouter)
+app.use('/code',codeRouter)
 app.use('/file',fileRouter)
 app.use('/static',express.static(path.join(__dirname,'./static')))
 app.use('/images',express.static(path.join(__dirname,'./uploads')))

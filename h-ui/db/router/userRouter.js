@@ -3,6 +3,7 @@ const router = express.Router()
 const user = require('../model/userModel')
 const Mail = require('../../../utils/mail')
 const JWT = require('../../../utils/jwt')
+const getCode = require('../../../utils/code')
 let codes = {}
 /**
  * @api {post} /user/reg   用户注册
@@ -48,12 +49,13 @@ router.post('/reg',(req,res)=>{
  * 
  */
 router.post('/login',(req,res)=>{
-  let {us,ps} = req.body
-  if(us && ps){
+  let {us,ps,code} = req.body
+  if(us && ps && code==req.session.code){
     user.find({us,ps}).then((data)=>{
       if(data.length){
         req.session.login=true;
         req.session.name=us
+        
         let token = JWT.createToken({login:true,name:us})
         res.send({err:0,msg:'登录ok',token:token})
       }else{
