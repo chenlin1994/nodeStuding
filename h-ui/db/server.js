@@ -13,6 +13,7 @@ const userRouter = require('./router/userRouter')
 const foodRouter = require('./router/foodRouter')
 const fileRouter = require('./router/fileRouter')
 const codeRouter = require('./router/codeRouter')
+var  Geetest = require('gt3-sdk')
 app.use(bodyParser.urlencoded({extended:false}))
 app.use(bodyParser.json())
 //session 整体配置
@@ -53,3 +54,5 @@ app.get('/cors',(req,res)=>{
 app.listen(3105,()=>{
   console.log('server start')
 })
+
+
