@@ -1,6 +1,7 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const app =express()
+const mysql = require('mysql')
 const jwt = require('jsonwebtoken')
 let  secret = 'dfsjflskflelf'  //产生tokne的私钥
 let payload={
@@ -41,8 +42,19 @@ app.post('/user/register',(req,res)=>{
   console.log(req.body)
 })
 
+var connection = mysql.createConnection({
+  host:'localhost',
+  user:'root',
+  password:'root',
+  database:'users'
+})
 
-
+connection.connect()
+connection.query("insert into person values('g')",function(error,result,fields){})
+connection.query('select * from   `person`',function(error,results,fields){
+  if(error) throw error;
+  console.log(results)
+})
 
 app.listen(3002,()=>{
   console.log('server start')
