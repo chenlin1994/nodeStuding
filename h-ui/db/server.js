@@ -42,10 +42,19 @@ app.use('/food',(req,res,next)=>{
 },foodRouter)
 app.use('/code',codeRouter)
 app.use('/file',fileRouter)
-app.use('/static',express.static(path.join(__dirname,'./static')))
+app.get('/',(req,res)=>{
+  res.redirect(302,'/login.html')
+})
+app.use(express.static(path.join(__dirname,'./static')))
 app.use('/images',express.static(path.join(__dirname,'./uploads')))
 app.use('/public',express.static(path.join(__dirname,'./images')))
 app.use('/apidoc',express.static(path.join(__dirname,'./apidoc')))
+app.get('/checkSeccion',(req,res)=>{
+  if(!req.session.login){
+    res.json({code:-1})
+  }
+ 
+})
 app.get('/cors',(req,res)=>{
   res.send('ok')
   request('',(err,res,body)=>{

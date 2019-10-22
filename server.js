@@ -1,6 +1,7 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const app =express()
+const md5 = require('blueimp-md5')
 const mysql = require('mysql')
 const jwt = require('jsonwebtoken')
 let  secret = 'dfsjflskflelf'  //产生tokne的私钥
@@ -56,6 +57,7 @@ connection.query('select * from   `person`',function(error,results,fields){
   console.log(results)
 })
 
+console.log(md5(3434))
 app.listen(3002,()=>{
   console.log('server start')
 })
